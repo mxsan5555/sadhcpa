@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  @@include('_head.html')
+  <link rel="preload" href="@@webRoot/assets/css/fonts/dm.css" as="style" onload="this.rel='stylesheet'">
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <header class="wrapper bg-light">
+      @@include('_header-sadhcpa.html')
+      @@include('_navbar-sadhcpa.html', {
+      "classList": "center-nav transparent navbar-light",
+      "otherClassList": "w-100 d-flex ms-auto",
+      "otherLanguageSelect": false,
+      "otherSocial": false,
+      "otherBtn": true,
+      "otherBtnClassList": "btn-sm btn-primary rounded-pill",
+      "otherBtnText": "Contact Us",
+      "otherBtnLink": "@@webRoot/contact-us.html"
+      })
+    </header>
+    <!-- /header -->
+
+    <section class="wrapper bg-soft-primary">
+      <div class="container pt-8 pt-md-10 pb-2 pb-md-4 mb-10">
+
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="display-4 mb-10">Disclaimer</h1>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+    <section class="wrapper bg-light">
+      <div class="container mb-15">
+
+        <div class="row">
+          <div class="col-md-12">
+              <p>Last updated: August 13, 2018</p>
+              <p>The information contained on https://www.sadhcpa.com website (the «Service») is for general information
+                purposes only.</p>
+              <p>Sadh &amp; Associates LLC assumes no responsibility for errors or omissions in the contents on the
+                Service.</p>
+              <p>In no event shall Sadh &amp; Associates LLC be liable for any special, direct, indirect, consequential,
+                or incidental damages or any damages whatsoever, whether in an action of contract, negligence or other
+                tort, arising out of or in connection with the use of the Service or the contents of the Service. Sadh
+                &amp; Associates LLC reserves the right to make additions, deletions, or modification to the contents on
+                the Service at any time without prior notice.</p>
+              <p>Sadh &amp; Associates LLC does not warrant that the Service is free of viruses or other harmful
+                components.</p>
+              <h2>Affiliate disclaimer</h2>
+              <p>This affiliate disclosure details the affiliate relationships of Sadh &amp; Associates LLC with other
+                companies and products.</p>
+              <p>Some of the links are «affiliate links», a link with a special tracking code. This means if you click
+                on an affiliate link and purchase the item, we will receive an affiliate commission.</p>
+              <p>The price of the item is the same whether it is an affiliate link or not. Regardless, we only recommend
+                products or services we believe will add value to our readers.</p>
+              <p>By using the affiliate links, you are helping support the Service, and we genuinely appreciate your
+                support.</p>
+              <p>Affiliate advertising programs that the Service uses are:</p>
+              <ul>
+                <li>
+                  <p>Amazon Services LLC Associates Program</p>
+                  <p>Sadh &amp; Associates LLC is a participant in the Amazon Services LLC Associates Program, an
+                    affiliate advertising program designed to provide a means for sites to earn advertising fees by
+                    advertising and linking to Amazon.com or endless.com, MYHABIT.com, SmallParts.com, or
+                    AmazonWireless.com.</p>
+                  <p>Pages on this Service may include affiliate links to Amazon and its affiliate sites on which the
+                    owner of this Service, Sadh &amp; Associates LLC, will make a referral commission.</p>
+                </li>
+                <li>
+                  <p>iDevAffiliate</p>
+                </li>
+                <li>
+                  <p>Commission Junction</p>
+                </li>
+                <li>
+                  <p>ShareASale</p>
+                </li>
+                <li>
+                  <p>ClickBank</p>
+                </li>
+                <li>
+                  <p>ClickFunnels</p>
+                </li>
+              </ul>
+              <h2>External links disclaimer</h2>
+              <p>https://www.sadhcpa.com website may contain links to external websites that are not provided or
+                maintained by or in any way affiliated with Sadh &amp; Associates LLC</p>
+              <p>Please note that the Sadh &amp; Associates LLC does not guarantee the accuracy, relevance, timeliness,
+                or completeness of any information on these external websites.</p>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Testimonials -->
+	<div class="container">
+		@@include('_testimonials.html')
+	</div>
+	<!--/.container -->
+	<!--/ Testimonials -->
+
+
+	<footer class="bg-navy text-inverse">
+    <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
+      <div class="d-lg-flex flex-row align-items-lg-center">
+        <h3 class="display-4 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white">Tax & Advisory
+          Real Estate Investments & Management
+          International Tax Advice</h3>
+        <a href="tel:212-760-1124" class="btn btn-primary rounded-pill mb-0 text-nowrap">Talk to a Consultant Today!
+          (212) 760-1124</a>
+      </div>
+      <!--/div -->
+      <hr class="mt-11 mb-12" />
+      @@include('_footer-widgets-sadhcpa.html', {
+      "lightText": true
+      })
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+
+  @@include('_page-progress.html')
+  @@include('_scripts.html')
+</body>
+
+</html>

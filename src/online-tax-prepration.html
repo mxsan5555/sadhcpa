@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  @@include('_head.html')
+  <link rel="preload" href="@@webRoot/assets/css/fonts/dm.css" as="style" onload="this.rel='stylesheet'">
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <header class="wrapper bg-light">
+      @@include('_header-sadhcpa.html')
+      @@include('_navbar-sadhcpa.html', {
+      "classList": "center-nav transparent navbar-light",
+      "otherClassList": "w-100 d-flex ms-auto",
+      "otherLanguageSelect": false,
+      "otherSocial": false,
+      "otherBtn": true,
+      "otherBtnClassList": "btn-sm btn-primary rounded-pill",
+      "otherBtnText": "Contact Us",
+      "otherBtnLink": "@@webRoot/contact-us.html"
+      })
+    </header>
+    <!-- /header -->
+
+    <section class="wrapper bg-soft-primary">
+      <div class="container pt-8 pt-md-10 pb-2 pb-md-4 mb-10">
+
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="display-4 mb-10">About us - Sadh & Associates LLC</h1>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+    <section class="wrapper bg-light">
+      <div class="container mb-15">
+
+        <div class="row">
+          <div class="col-md-12">
+            <p>Our firm provides outstanding service to our clients because of our dedication to the three underlying principles of professionalism, responsiveness and quality.</p>
+
+            <h3>Our Mission</h3>
+            <p>Most active venture capital firm</p>
+
+            <h3>MyTax Cloud Service</h3>
+            <p>Don’t Want To Visit An Office To File Taxes OR You Are Residing Outside New York? We will personally call you before beginning your return.</p>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+    <section class="wrapper bg-light">
+			<div class="container pt-1 pt-md-1">
+				<div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7
+														mb-md-10 mb-lg-16 align-items-center">
+					<div class="col-lg-12 mt-lg-n10 text-center text-lg-start" data-cues="slideInDown"
+						data-group="page-title" data-delay="600">
+						<h1 class="display-1 mb-5">Sadh & Associates LLC - Please Call or
+							Contact Us</h1>
+						<p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0"> We help you
+							grow
+							exponentially by adding value and minimizing risk with
+							immaculate Tax & Advisory services.
+						</p>
+						<div class="d-flex justify-content-center
+																justify-content-lg-start" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
+							<span><a href="tel:212-760-1124" class="btn btn-lg btn-danger
+																		rounded-pill me-2">Talk to a Consultant Today!
+									(212) 760-1124</a></span>
+						</div>
+					</div>
+					<!--/column -->
+				</div>
+				<!-- /.row -->
+
+				
+		</section>
+		<!-- /section -->
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Testimonials -->
+	<div class="container">
+		@@include('_testimonials.html')
+	</div>
+	<!--/.container -->
+	<!--/ Testimonials -->
+
+
+	<footer class="bg-navy text-inverse">
+    <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
+      <div class="d-lg-flex flex-row align-items-lg-center">
+        <h3 class="display-4 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white">Tax & Advisory
+          Real Estate Investments & Management
+          International Tax Advice</h3>
+        <a href="tel:212-760-1124" class="btn btn-primary rounded-pill mb-0 text-nowrap">Talk to a Consultant Today!
+          (212) 760-1124</a>
+      </div>
+      <!--/div -->
+      <hr class="mt-11 mb-12" />
+      @@include('_footer-widgets-sadhcpa.html', {
+      "lightText": true
+      })
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+
+  @@include('_page-progress.html')
+  @@include('_scripts.html')
+</body>
+
+</html>

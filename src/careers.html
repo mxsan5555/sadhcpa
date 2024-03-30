@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  @@include('_head.html')
+  <link rel="preload" href="@@webRoot/assets/css/fonts/dm.css" as="style" onload="this.rel='stylesheet'">
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <header class="wrapper bg-light">
+      @@include('_header-sadhcpa.html')
+      @@include('_navbar-sadhcpa.html', {
+      "classList": "center-nav transparent navbar-light",
+      "otherClassList": "w-100 d-flex ms-auto",
+      "otherLanguageSelect": false,
+      "otherSocial": false,
+      "otherBtn": true,
+      "otherBtnClassList": "btn-sm btn-primary rounded-pill",
+      "otherBtnText": "Contact Us",
+      "otherBtnLink": "@@webRoot/contact-us.html"
+      })
+    </header>
+    <!-- /header -->
+
+    <section class="wrapper bg-soft-primary">
+      <div class="container pt-8 pt-md-10 pb-2 pb-md-4 mb-10">
+
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="display-4 mb-10">Careers</h1>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+    <section class="wrapper bg-light">
+      <div class="container mb-15">
+
+        <div class="row">
+          <div class="col-md-12">
+              <p>Please <a href="contact-us.html"> contact us</a> for new openings.</p>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Testimonials -->
+	<div class="container">
+		@@include('_testimonials.html')
+	</div>
+	<!--/.container -->
+	<!--/ Testimonials -->
+
+
+	<footer class="bg-navy text-inverse">
+    <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
+      <div class="d-lg-flex flex-row align-items-lg-center">
+        <h3 class="display-4 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white">Tax & Advisory
+          Real Estate Investments & Management
+          International Tax Advice</h3>
+        <a href="tel:212-760-1124" class="btn btn-primary rounded-pill mb-0 text-nowrap">Talk to a Consultant Today!
+          (212) 760-1124</a>
+      </div>
+      <!--/div -->
+      <hr class="mt-11 mb-12" />
+      @@include('_footer-widgets-sadhcpa.html', {
+      "lightText": true
+      })
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+
+  @@include('_page-progress.html')
+  @@include('_scripts.html')
+</body>
+
+</html>

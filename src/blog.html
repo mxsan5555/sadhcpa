@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  @@include('_head.html')
+  <link rel="preload" href="@@webRoot/assets/css/fonts/dm.css" as="style" onload="this.rel='stylesheet'">
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <header class="wrapper bg-light">
+      @@include('_header-sadhcpa.html')
+      @@include('_navbar-sadhcpa.html', {
+      "classList": "center-nav transparent navbar-light",
+      "otherClassList": "w-100 d-flex ms-auto",
+      "otherLanguageSelect": false,
+      "otherSocial": false,
+      "otherBtn": true,
+      "otherBtnClassList": "btn-sm btn-primary rounded-pill",
+      "otherBtnText": "Contact Us",
+      "otherBtnLink": "@@webRoot/contact-us.html"
+      })
+    </header>
+    <!-- /header -->
+
+    <section class="wrapper bg-soft-primary">
+      <div class="container pt-8 pt-md-10 pb-2 pb-md-4 mb-10">
+
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="display-4 mb-10">Blog</h1>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+    <section class="wrapper bg-light">
+      <div class="container mb-15">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="container mt-5 pt-5" id="medium">
+
+
+              <div style="text-align: right; margin-bottom: 30px;">
+                <a href="https://medium.com/@SadhcpaLLC" class="btn btn-outline-gradient gradient-1 rounded-pill me-1 mb-2 mb-md-0"><span>View all Post</span></a>
+              </div>
+
+              <div id="jsonContent"> </div>
+
+
+              <div style="text-align: right;">
+                <a href="https://medium.com/@SadhcpaLLC" class="btn btn-outline-gradient gradient-1 rounded-pill me-1 mb-2 mb-md-0"><span>View all Post</span></a>
+              </div>
+
+
+            </div>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /section -->
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Testimonials -->
+	<div class="container">
+		@@include('_testimonials.html')
+	</div>
+	<!--/.container -->
+	<!--/ Testimonials -->
+
+
+	<footer class="bg-navy text-inverse">
+    <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
+      <div class="d-lg-flex flex-row align-items-lg-center">
+        <h3 class="display-4 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white">Tax & Advisory
+          Real Estate Investments & Management
+          International Tax Advice</h3>
+        <a href="tel:212-760-1124" class="btn btn-primary rounded-pill mb-0 text-nowrap">Talk to a Consultant Today!
+          (212) 760-1124</a>
+      </div>
+      <!--/div -->
+      <hr class="mt-11 mb-12" />
+      @@include('_footer-widgets-sadhcpa.html', {
+      "lightText": true
+      })
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+
+  @@include('_page-progress.html')
+  @@include('_scripts.html')
+
+
+  <!-- Blog Medium Script Start -->
+  <script>
+    $(function () {
+      var mediumPromise = new Promise(function (resolve) {
+        var $content = $('#jsonContent');
+        var data = {
+          rss: 'https://medium.com/feed/@SadhcpaLLC'
+        };
+        $.get(' https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40SadhcpaLLC', data, function (response) {
+          if (response.status == 'ok') {
+            $("#logo").append(`<img src="${response.feed["image"]}" class="rounded mx-auto d-block">`)
+            var display = '';
+            $.each(response.items, function (k, item) {
+
+
+
+              display += `<div class="card shadow-lg  mb-15 mb-md-14">`;
+                  
+                display += `<div class="row gx-0">`;
+
+                    display += `<div class="col-lg-4">`;
+                      display += `<figure class="p-5 p-md-5 p-lg-7">`;
+                        var src = item["thumbnail"]; // use thumbnail url
+                        display += `<img src="${src}" srcset="${src} 2x" alt="${src}" />`;
+                      display += '</figure>';
+
+                    display += '</div>';
+
+                    
+                    display += `<div class="col-lg-8">`;
+
+                      display += `<div class="p-5 p-md-5 p-lg-7">`;
+                        
+                        display += `<h2 class="display-4 mb-3"><a href="${item.link}">${item.title}</a></h2>`;
+
+                        var yourString = item.description.replace(/<img[^>]*>/g, ""); //replace with your string.
+                        yourString = yourString.replace('h4', 'p');
+                        yourString = yourString.replace('h3', 'p');
+                        var maxLength = 500; // maximum number of characters to extract
+                        //trim the string to the maximum length
+                        var trimmedString = yourString.substr(0, maxLength);
+                        //re-trim if we are in the middle of a word
+                        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                        display += `<p class="lead fs-lg">${trimmedString}...</p>`;
+
+                        display += `<div class="d-flex justify-content-center justify-content-lg-start">`;
+                          display += `<span>`;
+                            display += `<a href="${item.link}" class="btn btn-outline-primary rounded-pill">Read Now</a>`;
+                          display += '</span>';
+                        display += '</div>';
+
+                      display += '</div>';
+                      
+                    display += '</div>';
+                    
+
+                  display += '</div>';
+                
+              display += '</div>';
+
+
+              // display += `<div class="card mb-3 mx-auto mr-5 " style="width: 20rem;">`;
+              // var src = item["thumbnail"]; // use thumbnail url
+              // display += `<img src="${src}" class="card-img-top" alt="Cover image">`;
+              // display += `<div class="card-body">`;
+              // display += `<h5 class="card-title"><a href="${item.link}">${item.title}</a></h5>`;
+              // var yourString = item.description.replace(/<img[^>]*>/g, ""); //replace with your string.
+              // yourString = yourString.replace('h4', 'p');
+              // yourString = yourString.replace('h3', 'p');
+              // var maxLength = 120; // maximum number of characters to extract
+              // //trim the string to the maximum length
+              // var trimmedString = yourString.substr(0, maxLength);
+              // //re-trim if we are in the middle of a word
+              // trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+              // display += `<p class="card-text">${trimmedString}...</p>`;
+
+              // display += `<a href="${item.link}" target="_blank" class="btn btn-outline-success" >Read More</a>`;
+              // display += '</div></div>';
+
+
+
+
+
+
+
+              return k < 10;
+            });
+
+            resolve($content.html(display));
+          }
+        });
+      });
+
+      mediumPromise.then(function () {
+        //Pagination
+        pageSize = 4;
+
+        var pageCount = $(".card").length / pageSize;
+
+        for (var i = 0; i < pageCount; i++) {
+          $("#pagin").append(`<li class="page-item"><a class="page-link" href="#">${(i + 1)}</a></li> `);
+        }
+        $("#pagin li:nth-child(1)").addClass("active");
+        showPage = function (page) {
+          $(".card").hide();
+          $(".card").each(function (n) {
+            if (n >= pageSize * (page - 1) && n < pageSize * page)
+              $(this).show();
+          });
+        }
+
+        showPage(1);
+
+        $("#pagin li").click(function () {
+          $("#pagin li").removeClass("active");
+          $(this).addClass("active");
+          showPage(parseInt($(this).text()))
+          return false;
+        });
+      });
+    });
+  </script>
+  <!-- Blog Medium Script End -->
+</body>
+
+</html>
