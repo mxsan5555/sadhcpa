@@ -1,4 +1,4 @@
-name: Deploy to GoDaddy cPanel
+name: Deploy to GoDaddy
 
 on:
   push:
@@ -8,19 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install SSH Client
-        run: sudo apt-get install -y openssh-client
-
       - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy to GoDaddy cPanel
         run: |
-          rsync -avz --delete --exclude '.git*' dist/ makemytaxes@makemytaxes.com:/home/makemytaxes/public_html/sadhcpa.com
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H makemytaxes.com >> ~/.ssh/known_hosts
+          echo "SSH Key Setup Complete"
+
+        # Avoid displaying sensitive information
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to GoDaddy
+        run: |
+          rsync -avz -e "ssh -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/dev/null" --delete dist/ makemytaxes@makemytaxes.com:/home/makemytaxes/public_html/sadhcpa.com
