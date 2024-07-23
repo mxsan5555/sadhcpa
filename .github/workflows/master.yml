@@ -17,7 +17,10 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          echo "SSH Key Setup Complete" # Debugging message
           ssh-keyscan -H your-domain.com >> ~/.ssh/known_hosts
+          cat ~/.ssh/id_rsa # Debugging: Ensure key is correct (be careful with sensitive data)
+          cat ~/.ssh/known_hosts # Debugging: Ensure known hosts are correct
 
       - name: Deploy to GoDaddy
         run: |
