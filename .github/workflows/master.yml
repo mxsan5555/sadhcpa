@@ -17,7 +17,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H makemytaxes.com >> ~/.ssh/known_hosts
+          ssh-keyscan -H sadhcpa.com >> ~/.ssh/known_hosts
           echo "SSH Key Setup Complete"
 
       - name: Test SSH Connection
@@ -26,4 +26,4 @@ jobs:
 
       - name: Deploy to GoDaddy
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" --delete dist/ makemytaxes@makemytaxes.com:/home/makemytaxes/public_html/sadhcpa.com
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" --delete dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
