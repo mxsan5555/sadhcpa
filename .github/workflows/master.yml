@@ -14,14 +14,16 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install SSH Client
-      run: sudo apt-get install openssh-client
+      run: sudo apt-get install -y openssh-client
 
     - name: Setup SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.CPANEL_SSH_KEY }}
-        ssh-passphrase: ${{ secrets.CPANEL_SSH_PASSPHRASE }}
 
     - name: Deploy to GoDaddy cPanel
+      env:
+        SSH_AUTH_SOCK: ${{ secrets.SSH_AUTH_SOCK }}
       run: |
+        ssh-add - <<< "${{ secrets.CPANEL_SSH_PASSPHRASE }}"
         rsync -avz --delete --exclude '.git*' dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
