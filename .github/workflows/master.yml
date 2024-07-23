@@ -22,6 +22,7 @@ jobs:
       - name: Setup SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.CPANEL_SSH_PASSPHRASE }}
         run: ./setup-ssh.sh
 
       - name: Deploy to GoDaddy cPanel
