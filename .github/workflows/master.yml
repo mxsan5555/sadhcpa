@@ -3,7 +3,7 @@ name: Deploy to GoDaddy
 on:
   push:
     branches:
-      - main
+      - main # Change to your default branch if different
 
 jobs:
   deploy:
@@ -21,4 +21,4 @@ jobs:
 
       - name: Deploy to GoDaddy
         run: |
-          rsync -avz --delete --exclude '.git*' dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
+          rsync -avz --delete dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
