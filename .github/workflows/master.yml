@@ -10,23 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install SSH Client
-      run: sudo apt-get install -y openssh-client
+      - name: Install SSH Client
+        run: sudo apt-get install -y openssh-client
 
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.CPANEL_SSH_KEY }}
+      - name: Make setup-ssh.sh Executable
+        run: chmod +x setup-ssh.sh
 
-    - name: Add SSH Key Passphrase
-      run: |
-        echo "${{ secrets.CPANEL_SSH_PASSPHRASE }}" > /tmp/passphrase
-        ssh-add < /tmp/passphrase
-        rm /tmp/passphrase
+      - name: Setup SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_KEY }}
+        run: ./setup-ssh.sh
 
-    - name: Deploy to GoDaddy cPanel
-      run: |
-        rsync -avz --delete --exclude '.git*' dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
+      - name: Deploy to GoDaddy cPanel
+        run: |
+          rsync -avz --delete --exclude '.git*' dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
