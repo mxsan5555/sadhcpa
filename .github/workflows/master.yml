@@ -19,6 +19,11 @@ jobs:
       - name: Make setup-ssh.sh Executable
         run: chmod +x setup-ssh.sh
 
+      - name: Debug Environment Variables
+        run: |
+          echo "SSH_PRIVATE_KEY is set"
+          echo "SSH_PASSPHRASE is set"
+
       - name: Setup SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_KEY }}
