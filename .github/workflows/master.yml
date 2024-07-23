@@ -17,10 +17,13 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          # Manually add the server's host key to known_hosts
           ssh-keyscan -H makemytaxes.com >> ~/.ssh/known_hosts
           echo "SSH Key Setup Complete"
 
+      - name: Test SSH Connection
+        run: |
+          ssh -o StrictHostKeyChecking=no makemytaxes@makemytaxes.com "echo 'SSH connection successful'"
+
       - name: Deploy to GoDaddy
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=yes" --delete dist/ makemytaxes@makemytaxes.com:/home/makemytaxes/public_html/sadhcpa.com
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" --delete dist/ makemytaxes@makemytaxes.com:/home/makemytaxes/public_html/sadhcpa.com
