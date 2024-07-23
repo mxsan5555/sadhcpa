@@ -21,9 +21,12 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.CPANEL_SSH_KEY }}
 
-    - name: Deploy to GoDaddy cPanel
-      env:
-        SSH_AUTH_SOCK: ${{ secrets.SSH_AUTH_SOCK }}
+    - name: Add SSH Key Passphrase
       run: |
-        ssh-add - <<< "${{ secrets.CPANEL_SSH_PASSPHRASE }}"
+        echo "${{ secrets.CPANEL_SSH_PASSPHRASE }}" > /tmp/passphrase
+        ssh-add < /tmp/passphrase
+        rm /tmp/passphrase
+
+    - name: Deploy to GoDaddy cPanel
+      run: |
         rsync -avz --delete --exclude '.git*' dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
