@@ -18,10 +18,10 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           echo "SSH Key Setup Complete" # Debugging message
-          ssh-keyscan -H sadhcpa.com >> ~/.ssh/known_hosts
+          ssh-keyscan -H makemytaxes.com >> ~/.ssh/known_hosts
           cat ~/.ssh/id_rsa # Debugging: Ensure key is correct (be careful with sensitive data)
           cat ~/.ssh/known_hosts # Debugging: Ensure known hosts are correct
 
       - name: Deploy to GoDaddy
         run: |
-          rsync -avz --delete dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
+          rsync -avz --delete dist/ makemytaxes@makemytaxes.com:/home/makemytaxes/public_html/sadhcpa.com
