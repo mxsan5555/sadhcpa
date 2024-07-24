@@ -1,0 +1,25 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main # Change to your default branch if different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Sync files to GoDaddy
+        run: |
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./dist/ makemytaxes@sadhcpa.com:/home/makemytaxes/public_html/sadhcpa.com
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
