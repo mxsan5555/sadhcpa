@@ -12,7 +12,9 @@ var path = {
     img: 'dev/assets/img/',
     fonts: 'dev/assets/fonts/',
     media: 'dev/assets/media/',
-    php: 'dev/assets/php/'
+    php: 'dev/assets/php/',
+    txt: 'dev/',
+    xml: 'dev/',
   },
   dist: {
     html: 'dist/',
@@ -24,7 +26,9 @@ var path = {
     img: 'dist/assets/img/',
     fonts: 'dist/assets/fonts/',
     media: 'dist/assets/media/',
-    php: 'dist/assets/php/'
+    php: 'dist/assets/php/',
+    txt: 'dist/',
+    xml: 'dist/',
   },
   src: {
     html: ['src/**/*.html', '!src/partials/**/*.html', '!src/assets/php/**/*.html'],
@@ -39,7 +43,9 @@ var path = {
     img: 'src/assets/img/**/*.*',
     fonts: 'src/assets/fonts/**/*.*',
     media: 'src/assets/media/**/*.*',
-    php: 'src/assets/php/**/*.*'
+    php: 'src/assets/php/**/*.*',
+    txt: 'src/**/*.txt',
+    xml: 'src/**/*.xml',
   },
   watch: {
     html: ['src/**/*.html', '!src/assets/php/**/*.html'],
@@ -53,7 +59,9 @@ var path = {
     img: 'src/assets/img/**/*.*',
     fonts: 'src/assets/fonts/**/*.*',
     media: 'src/assets/media/**/*.*',
-    php: 'src/assets/php/'
+    php: 'src/assets/php/',
+    txt: 'src/**/*.txt',
+    xml: 'src/**/*.xml',
   },
   clean: {
     dev: 'dev/*',
@@ -120,6 +128,34 @@ gulp.task('html:dist', function () {
     .pipe(gulp.dest(path.dist.html))
     .pipe(touch())
     .on('end', () => { reload(); });
+});
+
+// Compile txt
+gulp.task('txt:dev', function () {
+  return gulp.src(path.src.txt)
+    .pipe(newer(path.dev.txt))
+    .pipe(gulp.dest(path.dev.txt))
+    .pipe(touch());
+});
+gulp.task('txt:dist', function () {
+  return gulp.src(path.src.txt)
+    .pipe(newer(path.dist.txt))
+    .pipe(gulp.dest(path.dist.txt))
+    .pipe(touch());
+});
+
+// Compile xml
+gulp.task('xml:dev', function () {
+  return gulp.src(path.src.xml)
+    .pipe(newer(path.dev.xml))
+    .pipe(gulp.dest(path.dev.xml))
+    .pipe(touch());
+});
+gulp.task('xml:dist', function () {
+  return gulp.src(path.src.xml)
+    .pipe(newer(path.dist.xml))
+    .pipe(gulp.dest(path.dist.xml))
+    .pipe(touch());
 });
 
 // Compile theme styles
@@ -359,7 +395,9 @@ gulp.task('build:dev',
       'fonts:dev',
       'media:dev',
       'php:dev',
-      'image:dev'
+      'image:dev',
+      'txt:dev',
+      'xml:dev'
       )
     )
 );
@@ -378,7 +416,9 @@ gulp.task('build:dist',
       'fonts:dist',
       'media:dist',
       'php:dist',
-      'image:dist'
+      'image:dist',
+      'txt:dist',
+      'xml:dist'
       )
     )
 );
@@ -397,6 +437,8 @@ gulp.task('watch', function () {
     gulp.watch(path.watch.fonts, gulp.series('fonts:dist'));
     gulp.watch(path.watch.media, gulp.series('media:dist'));
     gulp.watch(path.watch.php, gulp.series('php:dist'));
+    gulp.watch(path.watch.txt, gulp.series('txt:dist'));
+    gulp.watch(path.watch.xml, gulp.series('xml:dist'));
 });
 
 // Serve
