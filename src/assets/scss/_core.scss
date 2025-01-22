@@ -1,18 +1,18 @@
 /*!
-Theme Name: Sandbox - Modern & Multipurpose Bootstrap 5 Template
+Theme Name: Sadhcpa
 Theme URI:	https://sandbox.elemisthemes.com/start.html
 Version:	1.2.1
 Author:		elemis
 */
 
 // User colors
-@import 'user-colors';
+@import "user-colors";
 
 // Variables
 @import "variables";
 
 // User variables
-@import 'user-variables';
+@import "user-variables";
 
 // Utilities
 @import "utilities";
@@ -33,7 +33,4 @@ Author:		elemis
 @import "helpers";
 
 // User
-@import 'user';
-
-
-
+@import "user";

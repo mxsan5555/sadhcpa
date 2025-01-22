@@ -1,8 +1,8 @@
 {
-  "name": "sandbox",
+  "name": "Sadhcpa",
   "version": "1.2.1",
-  "description": "Sandbox - Modern & Multipurpose Bootstrap 5 Template",
-  "homepage": "https://sandbox.elemisthemes.com/start.html",
+  "description": "Sadhcpa",
+  "homepage": "https://www.sadhcpa.com/",
   "author": "elemis",
   "private": true,
   "devDependencies": {
